@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckPopulator : MonoBehaviour
+public class CardPopulator : MonoBehaviour
 {
 
 }

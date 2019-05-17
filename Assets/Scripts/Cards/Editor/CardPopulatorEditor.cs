@@ -5,21 +5,21 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-[CustomEditor(typeof(DeckPopulator))]
-public class DeckPopulatorEditor : Editor
+[CustomEditor(typeof(CardPopulator))]
+public class CardPopulatorEditor : Editor
 {
-    private DeckPopulator deckPopulator;
+    private CardPopulator cardPopulator;
 
     private void OnEnable()
     {
-        deckPopulator = target as DeckPopulator;
+        cardPopulator = target as CardPopulator;
     }
 
     public override void OnInspectorGUI()
     {
-        if(deckPopulator == null)
+        if(cardPopulator == null)
         {
-            deckPopulator = target as DeckPopulator;
+            cardPopulator = target as CardPopulator;
         }
 
         DrawPopulateDeck();
@@ -32,7 +32,7 @@ public class DeckPopulatorEditor : Editor
 
     private void DrawPopulateDeck()
     {
-        if(GUILayout.Button("Populate Deck"))
+        if(GUILayout.Button("Populate Cards"))
         {
             GUI.changed = PopulateDeck();
         }
@@ -48,7 +48,7 @@ public class DeckPopulatorEditor : Editor
         var cardImages = Resources.LoadAll<Sprite>("Cards");
         var cardImagesIndex = 0;
 
-        foreach(Transform child in deckPopulator.transform)
+        foreach(Transform child in cardPopulator.transform)
         {
             if (cardCount >= 13)
             {
