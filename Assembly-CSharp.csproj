@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
+    <Compile Include="Assets\Scripts\Cards\CardShuffle.cs" />
     <Compile Include="Assets\Scripts\Cards\Deck.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/mrome007unity/VP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
