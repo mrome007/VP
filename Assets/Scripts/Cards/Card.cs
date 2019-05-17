@@ -14,9 +14,8 @@ public class Card : MonoBehaviour
     [SerializeField]
     protected int cardValue;
 
-    public Suit CardSuit { get { return cardSuit; } set { cardSuit = value; } }
-    public virtual int CardValue { get { return cardValue; } set { cardValue = value; } }
-    public Image CardImage { get { return cardImage; } }
+    public Suit CardSuit { get { return cardSuit; } }
+    public virtual int CardValue { get { return cardValue; } }
 }
 
 public enum Suit

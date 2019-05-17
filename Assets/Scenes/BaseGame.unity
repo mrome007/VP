@@ -1381,7 +1381,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514230848}
-  - component: {fileID: 514230849}
   - component: {fileID: 514230850}
   m_Layer: 5
   m_Name: Deck
@@ -1461,18 +1460,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1000, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &514230849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514230847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064df3951b0bf44b795d8e7d68b4df6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &514230850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,7 +1472,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0befd61f1254d859b24344368a72fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - {fileID: 445208158}
+  - {fileID: 697804132}
+  - {fileID: 1499214954}
+  - {fileID: 1076586198}
+  - {fileID: 1009236572}
+  - {fileID: 1362214174}
+  - {fileID: 176480196}
+  - {fileID: 304660800}
+  - {fileID: 1818988571}
+  - {fileID: 336208289}
+  - {fileID: 670675892}
+  - {fileID: 270389355}
+  - {fileID: 854060189}
+  - {fileID: 1667298273}
+  - {fileID: 2110256487}
+  - {fileID: 1667384622}
+  - {fileID: 1762265030}
+  - {fileID: 1273026804}
+  - {fileID: 1054251971}
+  - {fileID: 1883794317}
+  - {fileID: 874188247}
+  - {fileID: 376220653}
+  - {fileID: 349080442}
+  - {fileID: 1052930117}
+  - {fileID: 350985690}
+  - {fileID: 342437883}
+  - {fileID: 737145482}
+  - {fileID: 1869604639}
+  - {fileID: 1443667206}
+  - {fileID: 999732696}
+  - {fileID: 639670235}
+  - {fileID: 51366723}
+  - {fileID: 321590410}
+  - {fileID: 1751769403}
+  - {fileID: 1076501902}
+  - {fileID: 1860529995}
+  - {fileID: 343421700}
+  - {fileID: 1583460776}
+  - {fileID: 1844206831}
+  - {fileID: 984166760}
+  - {fileID: 1422851616}
+  - {fileID: 1827535133}
+  - {fileID: 1632580036}
+  - {fileID: 362708259}
+  - {fileID: 1950784293}
+  - {fileID: 841657881}
+  - {fileID: 1446631323}
+  - {fileID: 393971380}
+  - {fileID: 2115692489}
+  - {fileID: 2102067407}
+  - {fileID: 1264184495}
+  - {fileID: 1974420867}
 --- !u!1 &616376307
 GameObject:
   m_ObjectHideFlags: 0
