@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class PresentationState : MonoBehaviour
 {
+    [SerializeField]
+    private PresentationState nextState;
+
     public virtual void EnterState()
+    {
+        RegisterEvents();
+    }
+
+    public virtual void ExitState()
+    {
+        UnRegisterEvents();
+        nextState.EnterState();
+    }
+
+    protected virtual void RegisterEvents()
     {
 
     }
 
-    public virtual void ExitState()
+    protected virtual void UnRegisterEvents()
     {
 
     }
