@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
+    public const int NumberOfCards = 52;
+
     [SerializeField]
     private List<Card> cards;
 
     private int dealtIndex = 0;
+    private List<int> shuffleIndexes;
 
     public void Shuffle()
     {
         dealtIndex = 0;
-        CardShuffle.Shuffle(cards);
+        ShuffleCards();
     }
 
     public Card DealCard()
@@ -39,5 +42,43 @@ public class Deck : MonoBehaviour
             hand[count] = cards[dealtIndex++];
         }
         return hand;
+    }
+
+    private void ShuffleCards()
+    {
+        PopulateShuffleIndexes();
+
+        var endIndex = NumberOfCards - 1;
+        var startIndex = 0;
+
+        for(var count = 0; count < NumberOfCards; count++)
+        {
+            var currentIndex = Random.Range(startIndex, endIndex);
+            var shuffleIndex = shuffleIndexes[currentIndex];
+
+            //move shuffleIndex selected to end of shuffleIndexes list.
+            shuffleIndexes[currentIndex] = shuffleIndexes[endIndex];
+            shuffleIndexes[endIndex] = shuffleIndex;
+
+            var card = cards[count];
+            cards[count] = cards[shuffleIndex];
+            cards[shuffleIndex] = card;
+
+            endIndex--;
+        }
+    }
+
+    private void PopulateShuffleIndexes()
+    {
+        if(shuffleIndexes != null)
+        {
+            return;
+        }
+
+        shuffleIndexes = new List<int>();
+        for(var count = 0; count < NumberOfCards; count++)
+        {
+            shuffleIndexes.Add(count);
+        }
     }
 }
