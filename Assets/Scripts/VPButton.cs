@@ -9,7 +9,7 @@ public class VPButton : MonoBehaviour
 {
     public Action ButtonPressed;
 
-    private Button button;
+    protected Button button;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class VPButton : MonoBehaviour
         button.onClick.AddListener(PostButtonPressed);
     }
 
-    private void PostButtonPressed()
+    protected void PostButtonPressed()
     {
         if(ButtonPressed != null)
         {

@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
     <Compile Include="Assets\Scripts\Cards\Deck.cs" />
     <Compile Include="Assets\Scripts\Cards\Hand.cs" />
+    <Compile Include="Assets\Scripts\HoldButton.cs" />
+    <Compile Include="Assets\Scripts\HoldButtons.cs" />
     <Compile Include="Assets\Scripts\States\FinalDrawAwardState.cs" />
     <Compile Include="Assets\Scripts\States\FinalDrawState.cs" />
     <Compile Include="Assets\Scripts\States\InitialDrawAwardState.cs" />

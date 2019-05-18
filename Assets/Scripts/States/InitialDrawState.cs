@@ -28,8 +28,8 @@ public class InitialDrawState : PresentationState
     private void HandleDealButtonPressed()
     {
         UnRegisterEvents();
-
         DealCards();
+        ExitState();
     }
 
     private void DealCards()
