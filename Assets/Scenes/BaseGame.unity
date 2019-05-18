@@ -4761,7 +4761,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bet
+  m_Text: Credit
 --- !u!222 &685546122
 CanvasRenderer:
   m_ObjectHideFlags: 0
