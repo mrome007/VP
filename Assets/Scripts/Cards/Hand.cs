@@ -28,14 +28,21 @@ public class Hand : MonoBehaviour
         }
     }
 
+    public void ReturnAllCards()
+    {
+        foreach(var card in hand)
+        {
+            if(card == null)
+            {
+                continue;
+            }
+
+            card.ReturnCard();
+        }
+    }
+
     public void AddCard(Card card)
     {
-        var previousCard = hand[currentAddIndex];
-        if(previousCard != null)
-        {
-            previousCard.ReturnCard();
-        }
-
         hand[currentAddIndex] = card;
 
         card.SetCard(handTransforms[currentAddIndex]);
@@ -52,7 +59,7 @@ public class Hand : MonoBehaviour
         }
 
         var previousCard = hand[index];
-        if (previousCard != null)
+        if(previousCard != null)
         {
             previousCard.ReturnCard();
         }

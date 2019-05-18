@@ -34,6 +34,7 @@ public class InitialDrawState : PresentationState
 
     private void DealCards()
     {
+        hand.ReturnAllCards();
         deck.Shuffle();
 
         for (var count = 0; count < 5; count++)
