@@ -1039,8 +1039,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94bafd2e8c76f4923ac7ad84ec7befdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winMessageLeft: {fileID: 0}
-  winMessageRight: {fileID: 0}
+  winMessageLeft: {fileID: 1621761371}
+  winMessageRight: {fileID: 1377113032}
 --- !u!1 &269068614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,7 +5114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMessageContainer: {fileID: 236246940}
   winMessageContainer: {fileID: 239125950}
-  winMessage: {fileID: 0}
+  winMessage: {fileID: 239125952}
 --- !u!1 &755459772
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,7 +5248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957ee699156b4e1da7a1c5b16ff8c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfCardsInHand: 5
   handTransforms:
   - {fileID: 1265247831}
   - {fileID: 1559066237}

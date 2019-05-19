@@ -28,10 +28,7 @@ public class InitialDrawState : PresentationState
     public override void EnterState()
     {
         base.EnterState();
-
-        betButton.EnableButton(true);
-        dealButton.EnableButton(true);
-        holdButtons.EnableButtons(false);
+        EnableButtonsForInitialDraw();
     }
 
     protected override void RegisterEvents()
@@ -57,6 +54,7 @@ public class InitialDrawState : PresentationState
 
         UnRegisterEvents();
         messagesController.ShowMessages(false);
+        metersController.ClearWin();
         metersController.BetGame();
         DealCards();
         ExitState();
@@ -66,6 +64,7 @@ public class InitialDrawState : PresentationState
     {
         hand.ReturnAllCards();
         messagesController.ShowMessages(false);
+        metersController.ClearWin();
         metersController.CycleBet();
         betButton.UpdateButton();
     }
@@ -80,5 +79,12 @@ public class InitialDrawState : PresentationState
             var card = deck.DealCard();
             hand.AddCard(card);
         }
+    }
+
+    private void EnableButtonsForInitialDraw()
+    {
+        betButton.EnableButton(true);
+        dealButton.EnableButton(true);
+        holdButtons.EnableButtons(false);
     }
 }

@@ -28,10 +28,8 @@ public class FinalDrawState : PresentationState
     public override void EnterState()
     {
         base.EnterState();
-
-        betButton.EnableButton(false);
-        dealButton.EnableButton(true);
-        holdButtons.EnableButtons(true);
+        EnableButtonsForFinalDraw();
+        ShowCurrentWinningHand();
     }
 
     protected override void RegisterEvents()
@@ -51,6 +49,9 @@ public class FinalDrawState : PresentationState
     private void HandleDealButtonPressed()
     {
         DealNewCards();
+        ShowCurrentWinningHand();
+        var currentHand = hand.ScoreHand();
+        metersController.AwardPrize(currentHand);
         UnRegisterEvents();
         ExitState();
     }
@@ -68,5 +69,26 @@ public class FinalDrawState : PresentationState
             var card = deck.DealCard();
             hand.AddCard(card, index);
         }
+    }
+
+    private void ShowCurrentWinningHand()
+    {
+        var currentHand = hand.ScoreHand();
+        if(currentHand != WinningHandCategory.Other)
+        {
+            messagesController.UpdateWinMessage(currentHand);
+            messagesController.ShowWinMessage();
+        }
+        else
+        {
+            messagesController.ShowMessages(false);
+        }
+    }
+
+    private void EnableButtonsForFinalDraw()
+    {
+        betButton.EnableButton(false);
+        dealButton.EnableButton(true);
+        holdButtons.EnableButtons(true);
     }
 }

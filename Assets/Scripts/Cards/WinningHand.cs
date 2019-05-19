@@ -11,6 +11,43 @@ public static class WinningHand
     {
         var result = WinningHandCategory.Other;
 
+        if(IsJacksOrBetter(cards))
+        {
+            result = WinningHandCategory.JacksOrBetter;
+        }
+        if(IsTwoPair(cards))
+        {
+            result = WinningHandCategory.TwoPair;
+        }
+        if(IsThreeOfAKind(cards))
+        {
+            result = WinningHandCategory.ThreeOfAKind;
+        }
+        if(IsStraight(cards))
+        {
+            result = WinningHandCategory.Straight;
+        }
+        if(IsFlush(cards))
+        {
+            result = WinningHandCategory.Flush;
+        }
+        if(IsFullHouse(cards))
+        {
+            result = WinningHandCategory.FullHouse;
+        }
+        if(IsFourOfAKind(cards))
+        {
+            result = WinningHandCategory.FourOfAKind;
+        }
+        if(IsStraightFlush(cards))
+        {
+            result = WinningHandCategory.StraightFlush;
+        }
+        if(IsRoyalFlush(cards))
+        {
+            result = WinningHandCategory.RoyalFlush;
+        }
+
         return result;
     }
 
@@ -22,12 +59,17 @@ public static class WinningHand
             pairCount[cards[index].CardValue - 1]++;
         }
 
-        for(var index = (int)FaceCards.Jack - 1; index < pairCount.Length; index++)
+        var numberOfJacksOrBetterCards = 4;
+        var jackOrBetterIndex = (int)FaceCards.Jack - 1; 
+        for(var count = 0; count < numberOfJacksOrBetterCards; count++)
         {
-            if(pairCount[index] == 2)
+            if(pairCount[jackOrBetterIndex] == 2)
             {
                 return true;
             }
+
+            jackOrBetterIndex++;
+            jackOrBetterIndex %= NumberOfCardsPerSuit;
         }
 
         return false;

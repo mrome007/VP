@@ -72,6 +72,11 @@ public class MetersController : MonoBehaviour
 
     public void AwardPrize(WinningHandCategory hand)
     {
+        if(hand == WinningHandCategory.Other)
+        {
+            return;
+        }
+
         var prizeIndex = (int)hand - 1;
         var win = currentBet * basePrizeAmounts[prizeIndex];
         currentCredits += win;
