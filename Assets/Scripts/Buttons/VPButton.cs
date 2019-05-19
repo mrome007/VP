@@ -29,7 +29,7 @@ public class VPButton : MonoBehaviour
     {
     }
 
-    public void EnableButton(bool enable)
+    public virtual void EnableButton(bool enable)
     {
         button.interactable = enable;
     }
