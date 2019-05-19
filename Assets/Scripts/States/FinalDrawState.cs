@@ -16,6 +16,24 @@ public class FinalDrawState : PresentationState
     [SerializeField]
     private VPButton dealButton;
 
+    [SerializeField]
+    private VPButton betButton;
+
+    [SerializeField]
+    private MetersController metersController;
+
+    [SerializeField]
+    private MessagesController messagesController;
+
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        betButton.EnableButton(false);
+        dealButton.EnableButton(true);
+        holdButtons.EnableButtons(true);
+    }
+
     protected override void RegisterEvents()
     {
         base.RegisterEvents();
@@ -40,7 +58,7 @@ public class FinalDrawState : PresentationState
     private void DealNewCards()
     {
         var held = holdButtons.GetHeld();
-        for(var index = 0; index < 5; index++)
+        for(var index = 0; index < held.Count; index++)
         {
             if(held[index])
             {

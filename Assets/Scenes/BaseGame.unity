@@ -3663,6 +3663,7 @@ MonoBehaviour:
   nextState: {fileID: 1519191098}
   deck: {fileID: 514230850}
   hand: {fileID: 761774164}
+  holdButtons: {fileID: 802286756}
   dealButton: {fileID: 766829906}
   betButton: {fileID: 1552092466}
   metersController: {fileID: 168862140}
@@ -10210,6 +10211,9 @@ MonoBehaviour:
   hand: {fileID: 761774164}
   holdButtons: {fileID: 802286756}
   dealButton: {fileID: 766829906}
+  betButton: {fileID: 1552092466}
+  metersController: {fileID: 168862140}
+  messagesController: {fileID: 740663548}
 --- !u!4 &1519191099
 Transform:
   m_ObjectHideFlags: 0

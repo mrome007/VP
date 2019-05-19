@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    [SerializeField]
-    private int numberOfCardsInHand = 5;
+    public const int NumberOfCardsInHand = 5;
 
     [SerializeField]
     private List<Transform> handTransforms;
@@ -22,7 +21,7 @@ public class Hand : MonoBehaviour
     private void InitializeHand()
     {
         hand = new List<Card>();
-        for(var count = 0; count < numberOfCardsInHand; count++)
+        for(var count = 0; count < NumberOfCardsInHand; count++)
         {
             hand.Add(null);
         }
@@ -30,7 +29,7 @@ public class Hand : MonoBehaviour
 
     public void ReturnAllCards()
     {
-        for(var count = 0; count < numberOfCardsInHand; count++)
+        for(var count = 0; count < NumberOfCardsInHand; count++)
         {
             if(hand[count] == null)
             {
@@ -49,12 +48,12 @@ public class Hand : MonoBehaviour
         card.SetCard(handTransforms[currentAddIndex]);
 
         currentAddIndex++;
-        currentAddIndex %= numberOfCardsInHand;
+        currentAddIndex %= NumberOfCardsInHand;
     }
 
     public void AddCard(Card card, int index)
     {
-        if(index < 0 || index >= numberOfCardsInHand)
+        if(index < 0 || index >= NumberOfCardsInHand)
         {
             return;
         }

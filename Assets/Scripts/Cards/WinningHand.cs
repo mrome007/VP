@@ -5,6 +5,8 @@ using UnityEngine;
 
 public static class WinningHand
 {
+    public const int NumberOfCardsPerSuit = 13;
+
     public static WinningHandCategory ScoreHand(List<Card> cards)
     {
         var result = WinningHandCategory.Other;
@@ -14,7 +16,7 @@ public static class WinningHand
 
     public static bool IsJacksOrBetter(List<Card> cards)
     {
-        var pairCount = new int[13];
+        var pairCount = new int[NumberOfCardsPerSuit];
         for(var index = 0; index < cards.Count; index++)
         {
             pairCount[cards[index].CardValue - 1]++;
@@ -33,7 +35,7 @@ public static class WinningHand
 
     public static bool IsTwoPair(List<Card> cards)
     {
-        var pairCount = new int[13];
+        var pairCount = new int[NumberOfCardsPerSuit];
         for(var index = 0; index < cards.Count; index++)
         {
             pairCount[cards[index].CardValue - 1]++;
@@ -43,7 +45,7 @@ public static class WinningHand
 
         for(var index = 0; index < pairCount.Length; index++)
         {
-            if(pairCount[index] == 0)
+            if(pairCount[index] == 2)
             {
                 twoPairsCount++;
                 if(twoPairsCount == 2)
@@ -58,7 +60,7 @@ public static class WinningHand
 
     public static bool IsThreeOfAKind(List<Card> cards)
     {
-        var similarCount = new int[13];
+        var similarCount = new int[NumberOfCardsPerSuit];
         for(var index = 0; index < cards.Count; index++)
         {
             similarCount[cards[index].CardValue - 1]++;
@@ -77,7 +79,37 @@ public static class WinningHand
 
     public static bool IsStraight(List<Card> cards)
     {
-        return false;
+        var cardCount = new int[NumberOfCardsPerSuit];
+        for(var index = 0; index < cards.Count; index++)
+        {
+            cardCount[cards[index].CardValue - 1]++;
+        }
+
+        var cardIndex = 0;
+        var straightCount = 0;
+        for(var count = 0; count < NumberOfCardsPerSuit; count++)
+        {
+            if(cardCount[cardIndex] == 1)
+            {
+                straightCount++;
+                if(straightCount == cards.Count)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                straightCount = 0;
+            }
+
+            cardIndex--;
+            if(cardIndex < 0)
+            {
+                cardIndex += NumberOfCardsPerSuit;
+            }
+        }
+
+        return straightCount == cards.Count;
     }
 
     public static bool IsFlush(List<Card> cards)
@@ -87,7 +119,7 @@ public static class WinningHand
 
     public static bool IsFullHouse(List<Card> cards)
     {
-        var similarCount = new int[13];
+        var similarCount = new int[NumberOfCardsPerSuit];
         for(var index = 0; index < cards.Count; index++)
         {
             similarCount[cards[index].CardValue - 1]++;
@@ -114,13 +146,13 @@ public static class WinningHand
 
     public static bool IsFourOfAKind(List<Card> cards)
     {
-        var similarCount = new int[13];
-        for (var index = 0; index < cards.Count; index++)
+        var similarCount = new int[NumberOfCardsPerSuit];
+        for(var index = 0; index < cards.Count; index++)
         {
             similarCount[cards[index].CardValue - 1]++;
         }
 
-        for (var index = 0; index < similarCount.Length; index++)
+        for(var index = 0; index < similarCount.Length; index++)
         {
             if (similarCount[index] == 4)
             {

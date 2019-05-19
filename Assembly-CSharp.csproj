@@ -72,9 +72,7 @@
     <Compile Include="Assets\Scripts\Messages\WinMessage.cs" />
     <Compile Include="Assets\Scripts\Meters\Meter.cs" />
     <Compile Include="Assets\Scripts\Meters\MetersController.cs" />
-    <Compile Include="Assets\Scripts\States\FinalDrawAwardState.cs" />
     <Compile Include="Assets\Scripts\States\FinalDrawState.cs" />
-    <Compile Include="Assets\Scripts\States\InitialDrawAwardState.cs" />
     <Compile Include="Assets\Scripts\States\InitialDrawState.cs" />
     <Compile Include="Assets\Scripts\States\PresentationState.cs" />
     <Compile Include="Assets\Scripts\States\StatesController.cs" />

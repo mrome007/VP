@@ -21,6 +21,19 @@ public class MetersController : MonoBehaviour
     public int WinValue { get { return winMeter.MeterValue; } }
     public int CreditValue { get { return creditMeter.MeterValue; } }
 
+    private readonly List<int> basePrizeAmounts = new List<int>()
+    {
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        25,
+        50,
+        800
+    };
+
     public void InitializeMeters()
     {
         betMeter.UpdateMeterValue(currentBet);
@@ -55,5 +68,20 @@ public class MetersController : MonoBehaviour
 
         currentCredits -= currentBet;
         creditMeter.UpdateMeterValue(currentCredits);
+    }
+
+    public void AwardPrize(WinningHandCategory hand)
+    {
+        var prizeIndex = (int)hand - 1;
+        var win = currentBet * basePrizeAmounts[prizeIndex];
+        currentCredits += win;
+
+        creditMeter.UpdateMeterValue(currentCredits);
+        winMeter.UpdateMeterValue(win);
+    }
+
+    public void ClearWin()
+    {
+        winMeter.UpdateMeterValue(0);
     }
 }

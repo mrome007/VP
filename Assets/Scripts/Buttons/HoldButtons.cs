@@ -7,6 +7,11 @@ public class HoldButtons : MonoBehaviour
     [SerializeField]
     private List<HoldButton> holdButtons;
 
+    public void EnableButtons(bool enable)
+    {
+        holdButtons.ForEach(button => button.EnableButton(enable));
+    }
+
     public void RegisterHoldButtons()
     {
         holdButtons.ForEach(holdButton => holdButton.RegisterHoldButton());
@@ -20,7 +25,7 @@ public class HoldButtons : MonoBehaviour
     public List<bool> GetHeld()
     {
         var held = new List<bool>();
-        for (var index = 0; index < holdButtons.Count; index++)
+        for(var index = 0; index < holdButtons.Count; index++)
         {
             held.Add(holdButtons[index].Held);
         }

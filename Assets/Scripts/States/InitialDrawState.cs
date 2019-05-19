@@ -11,6 +11,9 @@ public class InitialDrawState : PresentationState
     private Hand hand;
 
     [SerializeField]
+    private HoldButtons holdButtons;
+
+    [SerializeField]
     private VPButton dealButton;
 
     [SerializeField]
@@ -21,6 +24,15 @@ public class InitialDrawState : PresentationState
 
     [SerializeField]
     private MessagesController messagesController;
+
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        betButton.EnableButton(true);
+        dealButton.EnableButton(true);
+        holdButtons.EnableButtons(false);
+    }
 
     protected override void RegisterEvents()
     {
@@ -63,7 +75,7 @@ public class InitialDrawState : PresentationState
         hand.ReturnAllCards();
         deck.Shuffle();
 
-        for (var count = 0; count < 5; count++)
+        for(var count = 0; count < Hand.NumberOfCardsInHand; count++)
         {
             var card = deck.DealCard();
             hand.AddCard(card);

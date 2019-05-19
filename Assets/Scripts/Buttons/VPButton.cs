@@ -28,4 +28,9 @@ public class VPButton : MonoBehaviour
     public virtual void UpdateButton()
     {
     }
+
+    public void EnableButton(bool enable)
+    {
+        button.interactable = enable;
+    }
 }
