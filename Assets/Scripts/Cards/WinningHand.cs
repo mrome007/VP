@@ -138,7 +138,7 @@ public static class WinningHand
 
     public static bool IsRoyalFlush(List<Card> cards)
     {
-        return IsStraightFlush(cards) && cards.Any(card => card.CardValue == 1) && cards.Any(card => card.CardValue == 13);
+        return IsStraightFlush(cards) && !cards.Any(card => card.CardValue > 1 && card.CardValue < 10);
     }
 }
 
