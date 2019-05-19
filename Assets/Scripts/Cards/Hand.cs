@@ -30,14 +30,15 @@ public class Hand : MonoBehaviour
 
     public void ReturnAllCards()
     {
-        foreach(var card in hand)
+        for(var count = 0; count < numberOfCardsInHand; count++)
         {
-            if(card == null)
+            if(hand[count] == null)
             {
                 continue;
             }
 
-            card.ReturnCard();
+            hand[count].ReturnCard();
+            hand[count] = null;
         }
     }
 

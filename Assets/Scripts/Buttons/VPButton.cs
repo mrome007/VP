@@ -24,4 +24,8 @@ public class VPButton : MonoBehaviour
             ButtonPressed.Invoke();
         }
     }
+
+    public virtual void UpdateButton()
+    {
+    }
 }
