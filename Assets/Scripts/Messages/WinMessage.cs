@@ -25,24 +25,10 @@ public class WinMessage : MonoBehaviour
         "ROYAL\nFLUSH",
     };
 
-    public void UpdateWinMessage(WinningHand hand)
+    public void UpdateWinMessage(WinningHandCategory hand)
     {
         var message = winMessages[(int)hand];
         winMessageLeft.text = message;
         winMessageRight.text = message;
     }
-}
-
-public enum WinningHand
-{
-    Other,
-    JacksOrBetter,
-    TwoPair,
-    ThreeOfAKind,
-    Straight,
-    Flush,
-    FullHouse,
-    FourOfAKind,
-    StraightFlush,
-    RoyalFlush
 }

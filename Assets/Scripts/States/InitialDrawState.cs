@@ -44,6 +44,7 @@ public class InitialDrawState : PresentationState
         }
 
         UnRegisterEvents();
+        messagesController.ShowMessages(false);
         metersController.BetGame();
         DealCards();
         ExitState();

@@ -31,7 +31,7 @@ public class MessagesController : MonoBehaviour
         winMessageContainer.SetActive(show);
     }
 
-    public void UpdateWinMessage(WinningHand hand)
+    public void UpdateWinMessage(WinningHandCategory hand)
     {
         winMessage.UpdateWinMessage(hand);
     }

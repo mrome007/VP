@@ -42,3 +42,10 @@ public enum Suit
     Heart,
     Spade,
 }
+
+public enum FaceCards
+{
+    Jack = 11,
+    Queen = 12,
+    King = 13,
+}

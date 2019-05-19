@@ -69,8 +69,8 @@ public class Hand : MonoBehaviour
         card.SetCard(handTransforms[index]);
     }
 
-    public int ScoreHand()
+    public WinningHandCategory ScoreHand()
     {
-        return 0;
+        return WinningHand.ScoreHand(hand);
     }
 }

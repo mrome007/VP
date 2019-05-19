@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
     <Compile Include="Assets\Scripts\Cards\Deck.cs" />
     <Compile Include="Assets\Scripts\Cards\Hand.cs" />
+    <Compile Include="Assets\Scripts\Cards\WinningHand.cs" />
     <Compile Include="Assets\Scripts\Messages\MessagesController.cs" />
     <Compile Include="Assets\Scripts\Messages\WinMessage.cs" />
     <Compile Include="Assets\Scripts\Meters\Meter.cs" />
