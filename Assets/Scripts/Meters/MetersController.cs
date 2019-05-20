@@ -2,23 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Meters controller.
+/// </summary>
 public class MetersController : MonoBehaviour
 {
+    /// <summary>
+    /// Bet meter.
+    /// </summary>
     [SerializeField]
     private Meter betMeter;
 
+    /// <summary>
+    /// Win meter.
+    /// </summary>
     [SerializeField]
     private Meter winMeter;
 
+    /// <summary>
+    /// Credit meter.
+    /// </summary>
     [SerializeField]
     private Meter creditMeter;
 
+    /// <summary>
+    /// Paytable selection.
+    /// </summary>
     [SerializeField]
     private PaytableSelection paytableSelection;
 
+    /// <summary>
+    /// Inital credits.
+    /// </summary>
     private const int initalCredits = 100000;
+
+    /// <summary>
+    /// Max bet.
+    /// </summary>
     private const int maxBet = 5;
 
+    /// <summary>
+    /// Base prize amounts.
+    /// </summary>
     private readonly List<int> basePrizeAmounts = new List<int>()
     {
         1,
@@ -37,6 +62,9 @@ public class MetersController : MonoBehaviour
         InitializeMeters();
     }
 
+    /// <summary>
+    /// Initializes the meters.
+    /// </summary>
     public void InitializeMeters()
     {
         betMeter.UpdateMeterValue(1);
@@ -44,6 +72,9 @@ public class MetersController : MonoBehaviour
         creditMeter.UpdateMeterValue(initalCredits);
     }
 
+    /// <summary>
+    /// Cycles the bet.
+    /// </summary>
     public void CycleBet()
     {
         var currentBet = betMeter.MeterValue;
@@ -59,12 +90,19 @@ public class MetersController : MonoBehaviour
         paytableSelection.ShowSelection(currentBet - 1, true);
     }
 
+    /// <summary>
+    /// Check if there's enough credits to bet.
+    /// </summary>
+    /// <returns><c>true</c>, if can bet, <c>false</c> otherwise.</returns>
     public bool CanBet()
     {
         var creditsAfterBet = creditMeter.MeterValue - betMeter.MeterValue;
         return creditsAfterBet >= 0;
     }
 
+    /// <summary>
+    /// Bets the game.
+    /// </summary>
     public void BetGame()
     {
         if(!CanBet())
@@ -76,6 +114,10 @@ public class MetersController : MonoBehaviour
         creditMeter.UpdateMeterValue(currentCredits);
     }
 
+    /// <summary>
+    /// Awards the prize.
+    /// </summary>
+    /// <param name="hand">Hand.</param>
     public void AwardPrize(WinningHandCategory hand)
     {
         if(hand == WinningHandCategory.Other)
@@ -92,11 +134,17 @@ public class MetersController : MonoBehaviour
         winMeter.UpdateMeterValue(win);
     }
 
+    /// <summary>
+    /// Clears the win.
+    /// </summary>
     public void ClearWin()
     {
         winMeter.UpdateMeterValue(0);
     }
 
+    /// <summary>
+    /// Adds credits.
+    /// </summary>
     public void AddCredits()
     {
         var currentCredits = creditMeter.MeterValue;
@@ -104,6 +152,10 @@ public class MetersController : MonoBehaviour
         creditMeter.UpdateMeterValue(currentCredits);
     }
 
+    /// <summary>
+    /// Checks if there are credits
+    /// </summary>
+    /// <returns><c>true</c>, if there are credits, <c>false</c> otherwise.</returns>
     public bool HasCredits()
     {
         return creditMeter.MeterValue != 0;

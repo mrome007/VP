@@ -3,17 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Card class.
+/// </summary>
 public class Card : MonoBehaviour
 {
+    /// <summary>
+    /// Card suit.
+    /// </summary>
     [SerializeField]
     private Suit cardSuit;
 
+    /// <summary>
+    /// Card value.
+    /// </summary>
     [SerializeField]
     protected int cardValue;
 
+    /// <summary>
+    /// Gets the card suit.
+    /// </summary>
+    /// <value>The card suit.</value>
     public Suit CardSuit { get { return cardSuit; } }
+
+    /// <summary>
+    /// Gets the card value.
+    /// </summary>
+    /// <value>The card value.</value>
     public virtual int CardValue { get { return cardValue; } }
 
+    /// <summary>
+    /// Card's parent transform.
+    /// </summary>
     private Transform cardContainer;
 
     private void Awake()
@@ -21,12 +42,19 @@ public class Card : MonoBehaviour
         cardContainer = transform.parent;
     }
 
+    /// <summary>
+    /// Returns the card original parent.
+    /// </summary>
     public void ReturnCard()
     {
         transform.SetParent(cardContainer);
         transform.localPosition = Vector3.zero;
     }
 
+    /// <summary>
+    /// Sets the card to new parent.
+    /// </summary>
+    /// <param name="container">Container.</param>
     public void SetCard(Transform container)
     {
         transform.SetParent(container);
@@ -35,6 +63,9 @@ public class Card : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Suits
+/// </summary>
 public enum Suit
 {
     Club,
@@ -43,6 +74,9 @@ public enum Suit
     Spade,
 }
 
+/// <summary>
+/// Face cards
+/// </summary>
 public enum FaceCards
 {
     Jack = 11,

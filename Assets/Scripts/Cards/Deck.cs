@@ -2,22 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Deck class.
+/// </summary>
 public class Deck : MonoBehaviour
 {
+    /// <summary>
+    /// The number of cards per deck.
+    /// </summary>
     public const int NumberOfCards = 52;
 
+    /// <summary>
+    /// Cards.
+    /// </summary>
     [SerializeField]
     private List<Card> cards;
 
+    /// <summary>
+    /// Current dealt card index.
+    /// </summary>
     private int dealtIndex = 0;
+
+    /// <summary>
+    /// List of indexes used for shuffling.
+    /// </summary>
     private List<int> shuffleIndexes;
 
+    /// <summary>
+    /// Shuffle deck.
+    /// </summary>
     public void Shuffle()
     {
         dealtIndex = 0;
         ShuffleCards();
     }
 
+    /// <summary>
+    /// Deals the card.
+    /// </summary>
+    /// <returns>The card.</returns>
     public Card DealCard()
     {
         if(dealtIndex < 0 || dealtIndex >= cards.Count)
@@ -29,6 +52,11 @@ public class Deck : MonoBehaviour
         return card;
     }
 
+    /// <summary>
+    /// Deals the hand.
+    /// </summary>
+    /// <returns>The hand.</returns>
+    /// <param name="numberOfCards">Number of cards.</param>
     public Card[] DealHand(int numberOfCards)
     {
         if(dealtIndex + numberOfCards >= cards.Count)
@@ -44,6 +72,9 @@ public class Deck : MonoBehaviour
         return hand;
     }
 
+    /// <summary>
+    /// Shuffles the cards.
+    /// </summary>
     private void ShuffleCards()
     {
         PopulateShuffleIndexes();
@@ -68,6 +99,9 @@ public class Deck : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Populates the shuffle indexes.
+    /// </summary>
     private void PopulateShuffleIndexes()
     {
         if(shuffleIndexes != null)

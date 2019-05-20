@@ -2,29 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Final draw presentation state.
+/// </summary>
 public class FinalDrawState : PresentationState
 {
+    /// <summary>
+    /// Deck
+    /// </summary>
     [SerializeField]
     private Deck deck;
 
+    /// <summary>
+    /// Hand
+    /// </summary>
     [SerializeField]
     private Hand hand;
 
+    /// <summary>
+    /// Hold buttons
+    /// </summary>
     [SerializeField]
     private HoldButtons holdButtons;
 
+    /// <summary>
+    /// Deal button
+    /// </summary>
     [SerializeField]
     private VPButton dealButton;
 
+    /// <summary>
+    /// Bet button
+    /// </summary>
     [SerializeField]
     private VPButton betButton;
 
+    /// <summary>
+    /// Meters controller
+    /// </summary>
     [SerializeField]
     private MetersController metersController;
 
+    /// <summary>
+    /// Messages controller
+    /// </summary>
     [SerializeField]
     private MessagesController messagesController;
 
+    /// <inheritdoc />
     public override void EnterState()
     {
         base.EnterState();
@@ -32,6 +57,7 @@ public class FinalDrawState : PresentationState
         ShowCurrentWinningHandMessage();
     }
 
+    /// <inheritdoc />
     protected override void RegisterEvents()
     {
         base.RegisterEvents();
@@ -39,6 +65,7 @@ public class FinalDrawState : PresentationState
         dealButton.ButtonPressed += HandleDealButtonPressed;
     }
 
+    /// <inheritdoc />
     protected override void UnRegisterEvents()
     {
         base.UnRegisterEvents();
@@ -46,6 +73,9 @@ public class FinalDrawState : PresentationState
         dealButton.ButtonPressed -= HandleDealButtonPressed;
     }
 
+    /// <summary>
+    /// Handler when deal button is pressed.
+    /// </summary>
     private void HandleDealButtonPressed()
     {
         DealNewCards();
@@ -56,6 +86,9 @@ public class FinalDrawState : PresentationState
         ExitState();
     }
 
+    /// <summary>
+    /// Deals new cards.
+    /// </summary>
     private void DealNewCards()
     {
         var held = holdButtons.GetHeld();
@@ -71,6 +104,9 @@ public class FinalDrawState : PresentationState
         }
     }
 
+    /// <summary>
+    /// Shows the current winning hand message.
+    /// </summary>
     private void ShowCurrentWinningHandMessage()
     {
         var currentHand = hand.ScoreHand();
@@ -85,6 +121,9 @@ public class FinalDrawState : PresentationState
         }
     }
 
+    /// <summary>
+    /// Shows the final hand message.
+    /// </summary>
     private void ShowFinalHandMessage()
     {
         var currentHand = hand.ScoreHand();
@@ -99,6 +138,9 @@ public class FinalDrawState : PresentationState
         }
     }
 
+    /// <summary>
+    /// Enables the buttons for final draw.
+    /// </summary>
     private void EnableButtonsForFinalDraw()
     {
         betButton.EnableButton(false);
