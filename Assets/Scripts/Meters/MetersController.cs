@@ -13,9 +13,11 @@ public class MetersController : MonoBehaviour
     [SerializeField]
     private Meter creditMeter;
 
-    private int currentCredits = 100000;
-    private int currentBet = 1;
-    private int maxBet = 5;
+    [SerializeField]
+    private PaytableSelection paytableSelection;
+
+    private const int initalCredits = 100000;
+    private const int maxBet = 5;
 
     private readonly List<int> basePrizeAmounts = new List<int>()
     {
@@ -37,26 +39,29 @@ public class MetersController : MonoBehaviour
 
     public void InitializeMeters()
     {
-        betMeter.UpdateMeterValue(currentBet);
+        betMeter.UpdateMeterValue(1);
         winMeter.UpdateMeterValue(0);
-        creditMeter.UpdateMeterValue(currentCredits);
+        creditMeter.UpdateMeterValue(initalCredits);
     }
 
     public void CycleBet()
     {
+        var currentBet = betMeter.MeterValue;
         currentBet++;
         currentBet %= maxBet;
+
         if(currentBet == 0)
         {
             currentBet = maxBet;
         }
 
         betMeter.UpdateMeterValue(currentBet);
+        paytableSelection.ShowSelection(currentBet - 1, true);
     }
 
     public bool CanBet()
     {
-        var creditsAfterBet = currentCredits - currentBet;
+        var creditsAfterBet = creditMeter.MeterValue - betMeter.MeterValue;
         return creditsAfterBet >= 0;
     }
 
@@ -67,7 +72,7 @@ public class MetersController : MonoBehaviour
             return;
         }
 
-        currentCredits -= currentBet;
+        var currentCredits = creditMeter.MeterValue  - betMeter.MeterValue;
         creditMeter.UpdateMeterValue(currentCredits);
     }
 
@@ -79,7 +84,8 @@ public class MetersController : MonoBehaviour
         }
 
         var prizeIndex = (int)hand - 1;
-        var win = currentBet * basePrizeAmounts[prizeIndex];
+        var win = betMeter.MeterValue * basePrizeAmounts[prizeIndex];
+        var currentCredits = creditMeter.MeterValue;
         currentCredits += win;
 
         creditMeter.UpdateMeterValue(currentCredits);
@@ -93,12 +99,13 @@ public class MetersController : MonoBehaviour
 
     public void AddCredits()
     {
-        currentCredits += 100000;
+        var currentCredits = creditMeter.MeterValue;
+        currentCredits += initalCredits;
         creditMeter.UpdateMeterValue(currentCredits);
     }
 
     public bool HasCredits()
     {
-        return currentCredits != 0;
+        return creditMeter.MeterValue != 0;
     }
 }
