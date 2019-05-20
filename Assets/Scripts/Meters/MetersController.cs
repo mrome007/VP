@@ -17,10 +17,6 @@ public class MetersController : MonoBehaviour
     private int currentBet = 1;
     private int maxBet = 5;
 
-    public int BetValue { get { return betMeter.MeterValue; } }
-    public int WinValue { get { return winMeter.MeterValue; } }
-    public int CreditValue { get { return creditMeter.MeterValue; } }
-
     private readonly List<int> basePrizeAmounts = new List<int>()
     {
         1,
@@ -33,6 +29,11 @@ public class MetersController : MonoBehaviour
         50,
         800
     };
+
+    private void Awake()
+    {
+        InitializeMeters();
+    }
 
     public void InitializeMeters()
     {
@@ -88,5 +89,16 @@ public class MetersController : MonoBehaviour
     public void ClearWin()
     {
         winMeter.UpdateMeterValue(0);
+    }
+
+    public void AddCredits()
+    {
+        currentCredits += 100000;
+        creditMeter.UpdateMeterValue(currentCredits);
+    }
+
+    public bool HasCredits()
+    {
+        return currentCredits != 0;
     }
 }

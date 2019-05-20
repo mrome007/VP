@@ -6,21 +6,18 @@ using UnityEngine.UI;
 public class Meter : MonoBehaviour
 {
     [SerializeField]
-    private int meterValue;
-
-    [SerializeField]
     private Text meterValueText;
 
-    public int MeterValue { get { return meterValue; } }
+    public int MeterValue { get; private set; }
 
     private void Awake()
     {
-        UpdateMeterValue(meterValue);
+        UpdateMeterValue(MeterValue);
     }
 
     public void UpdateMeterValue(int value)
     {
-        meterValue = value;
+        MeterValue = value;
         meterValueText.text = value.ToString();
     }
 }

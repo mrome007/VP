@@ -28,6 +28,12 @@ public class InitialDrawState : PresentationState
     public override void EnterState()
     {
         base.EnterState();
+
+        if(!metersController.HasCredits())
+        {
+            metersController.AddCredits();
+        }
+
         EnableButtonsForInitialDraw();
     }
 

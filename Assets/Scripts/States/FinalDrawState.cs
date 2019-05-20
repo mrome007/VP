@@ -29,7 +29,7 @@ public class FinalDrawState : PresentationState
     {
         base.EnterState();
         EnableButtonsForFinalDraw();
-        ShowCurrentWinningHand();
+        ShowCurrentWinningHandMessage();
     }
 
     protected override void RegisterEvents()
@@ -49,7 +49,7 @@ public class FinalDrawState : PresentationState
     private void HandleDealButtonPressed()
     {
         DealNewCards();
-        ShowCurrentWinningHand();
+        ShowFinalHandMessage();
         var currentHand = hand.ScoreHand();
         metersController.AwardPrize(currentHand);
         UnRegisterEvents();
@@ -71,7 +71,7 @@ public class FinalDrawState : PresentationState
         }
     }
 
-    private void ShowCurrentWinningHand()
+    private void ShowCurrentWinningHandMessage()
     {
         var currentHand = hand.ScoreHand();
         if(currentHand != WinningHandCategory.Other)
@@ -82,6 +82,20 @@ public class FinalDrawState : PresentationState
         else
         {
             messagesController.ShowMessages(false);
+        }
+    }
+
+    private void ShowFinalHandMessage()
+    {
+        var currentHand = hand.ScoreHand();
+        if(currentHand != WinningHandCategory.Other)
+        {
+            messagesController.UpdateWinMessage(currentHand);
+            messagesController.ShowWinMessage();
+        }
+        else
+        {
+            messagesController.ShowGameOverMessage();
         }
     }
 

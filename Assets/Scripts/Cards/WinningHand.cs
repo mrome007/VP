@@ -129,7 +129,7 @@ public static class WinningHand
 
         var cardIndex = 0;
         var straightCount = 0;
-        for(var count = 0; count < NumberOfCardsPerSuit; count++)
+        for(var count = 0; count <= NumberOfCardsPerSuit; count++)
         {
             if(cardCount[cardIndex] == 1)
             {
